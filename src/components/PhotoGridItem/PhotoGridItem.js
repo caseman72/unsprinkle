@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+// TODO: move to common utils
 const srcToSrcSets = (src, ext) => `
   ${src} 1x,
   ${src.replace(/\.jpg/, `@2x.${ext}`)} 2x,
@@ -58,6 +59,7 @@ const Tag = styled.li`
   display: inline;
   padding: 4px 8px;
   background: var(--color-gray-300);
+  border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 475;
   color: var(--color-gray-800);

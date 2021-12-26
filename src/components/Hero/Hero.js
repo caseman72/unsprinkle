@@ -1,11 +1,30 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
+// TODO: move to common utils
+const srcToSrcSets = (src, ext) => `
+  ${src} 1x,
+  ${src.replace(/\.jpg/, `@2x.${ext}`)} 2x,
+  ${src.replace(/\.jpg/, `@3x.${ext}`)} 3x
+`;
+
+
 const Hero = () => {
+  const heroSrc = "/images/hero-img.jpg";
   return (
     <Wrapper>
-      <HeroImage src="/images/hero-img.jpg" />
-      <Swoop src="/swoop.svg" />
+      <picture>
+        <source
+          type="image/avif"
+          srcSet={srcToSrcSets(heroSrc, "avif")}
+        />
+        <source
+          type="image/jpeg"
+          srcSet={srcToSrcSets(heroSrc, "jpg")}
+        />
+        <HeroImage alt="Main full screen image (cat)" src={heroSrc} />
+      </picture>
+      <Swoop alt="" src="/swoop.svg" />
     </Wrapper>
   );
 };
